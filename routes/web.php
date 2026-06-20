@@ -6,14 +6,14 @@ use App\Livewire\PaketIndex;
 use App\Livewire\PaketForm;
 use App\Livewire\TransaksiForm;
 use App\Livewire\TransaksiTracking;
+use App\Livewire\Dashboard;
+use App\Http\Controllers\StrukController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', Dashboard::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/kasir', TransaksiForm::class)->name('kasir.index');
     Route::get('/tracking', TransaksiTracking::class)->name('tracking.index');
+    Route::get('/struk/{transaksi}', [StrukController::class, 'cetak'])->name('struk.cetak');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

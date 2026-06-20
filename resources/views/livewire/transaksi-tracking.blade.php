@@ -56,9 +56,10 @@
                             </button>
                         </td>
                         <td class="px-4 py-3">
-                            <button class="text-indigo-600 hover:underline text-xs">
+                            <a href="{{ route('struk.cetak', $transaksi) }}" target="_blank"
+                                class="text-indigo-600 hover:underline text-xs">
                                 Cetak Ulang Struk
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 @empty

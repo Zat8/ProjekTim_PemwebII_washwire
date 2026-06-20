@@ -59,6 +59,7 @@ class TransaksiForm extends Component
         session()->flash('success', "Transaksi $noNota berhasil dibuat!");
 
         $this->reset(['nama_pelanggan', 'no_hp', 'paket_laundry_id', 'berat']);
+        return $this->redirect(route('struk.cetak', $transaksi), navigate: false);
     }
 
     public function render()
