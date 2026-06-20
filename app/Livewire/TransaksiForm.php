@@ -24,7 +24,8 @@ class TransaksiForm extends Component
     }
 
     // Hitung total harga secara real-time (computed property)
-    public function getTotalHargaProperty()
+    #[\Livewire\Attributes\Computed]
+    public function totalHarga()
     {
         if (!$this->paket_laundry_id || !$this->berat) {
             return 0;
@@ -45,7 +46,7 @@ class TransaksiForm extends Component
 
         $noNota = 'INV-' . str_pad((Transaksi::count() + 1), 4, '0', STR_PAD_LEFT);
 
-        Transaksi::create([
+        $transaksi = Transaksi::create([
             'no_nota' => $noNota,
             'nama_pelanggan' => $this->nama_pelanggan,
             'no_hp' => $this->no_hp,
