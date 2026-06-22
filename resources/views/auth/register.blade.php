@@ -49,6 +49,18 @@
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
+                    <!-- Nomor Handphone -->
+                    <div>
+                        <x-input-label for="no_hp" :value="__('Nomor Handphone')" />
+                        <x-text-input id="no_hp"
+                            class="block mt-1 w-full rounded-lg border-gray-300 focus:border-[#9737e3] focus:ring-[#9737e3] transition"
+                            type="text"
+                            name="no_hp"
+                            :value="old('no_hp')"
+                            placeholder="Contoh: 081234567890" />
+                        <x-input-error :messages="$errors->get('no_hp')" class="mt-2" />
+                    </div>
+
                     <!-- Password -->
                     <div>
                         <x-input-label for="password" :value="__('Password')" />

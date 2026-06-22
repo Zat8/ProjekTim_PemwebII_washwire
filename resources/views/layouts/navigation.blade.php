@@ -22,42 +22,62 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-1">
-                    <!-- Dashboard -->
-                    <a href="{{ route('dashboard') }}" 
-                       class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('dashboard') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" />
-                        </svg>
-                        Dashboard
-                    </a>
-
-                    <!-- Kasir / Buat Transaksi -->
-                    <a href="{{ route('kasir.index') }}" 
-                       class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('kasir.*') || request()->routeIs('kasir.index') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        Kasir
-                    </a>
-
-                    <!-- Pelacakan -->
-                    <a href="{{ route('tracking.index') }}" 
-                       class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('tracking.*') || request()->routeIs('tracking.index') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-2 5h.01M9 16h.01M9 12h.01M12 12h3M12 16h3M12 10h3" />
-                        </svg>
-                        Pelacakan
-                    </a>
-
-                    <!-- Kelola Paket (Admin Only) -->
-                    @if (auth()->user()->isAdmin())
-                        <a href="{{ route('paket.index') }}" 
-                           class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('paket.*') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
+                    @if (auth()->user()->isPelanggan())
+                        <!-- Dashboard Pelanggan -->
+                        <a href="{{ route('pelanggan.dashboard') }}" 
+                           class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('pelanggan.dashboard') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" />
                             </svg>
-                            Kelola Paket
+                            Dashboard
                         </a>
+
+                        <!-- Lacak Cucian -->
+                        <a href="{{ route('pelanggan.tracking') }}" 
+                           class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('pelanggan.tracking') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-2 5h.01M9 16h.01M9 12h.01M12 12h3M12 16h3M12 10h3" />
+                            </svg>
+                            Lacak Cucian
+                        </a>
+                    @else
+                        <!-- Dashboard Staff -->
+                        <a href="{{ route('staff.dashboard') }}" 
+                           class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('staff.dashboard') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" />
+                            </svg>
+                            Dashboard
+                        </a>
+
+                        <!-- Kasir / Buat Transaksi -->
+                        <a href="{{ route('kasir.index') }}" 
+                           class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('kasir.*') || request()->routeIs('kasir.index') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            Kasir
+                        </a>
+
+                        <!-- Pelacakan -->
+                        <a href="{{ route('tracking.index') }}" 
+                           class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('tracking.*') || request()->routeIs('tracking.index') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-2 5h.01M9 16h.01M9 12h.01M12 12h3M12 16h3M12 10h3" />
+                            </svg>
+                            Pelacakan
+                        </a>
+
+                        <!-- Kelola Paket (Admin Only) -->
+                        @if (auth()->user()->isAdmin())
+                            <a href="{{ route('paket.index') }}" 
+                               class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition duration-200 {{ request()->routeIs('paket.*') ? 'bg-indigo-50 text-indigo-700 font-semibold shadow-sm dark:bg-indigo-900/40 dark:text-indigo-300' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-slate-100' }}">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                </svg>
+                                Kelola Paket
+                            </a>
+                        @endif
                     @endif
                 </div>
             </div>
@@ -65,7 +85,7 @@
             <!-- Right side: Dark Mode Toggle + Settings Dropdown -->
             <div class="hidden md:flex md:items-center md:ms-6 gap-2">
                 <!-- Role Badge -->
-                <span class="me-1 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider {{ auth()->user()->isAdmin() ? 'bg-gradient-to-r from-purple-100 to-indigo-100 text-indigo-700 border border-indigo-200/50 dark:from-purple-900/40 dark:to-indigo-900/40 dark:text-indigo-300 dark:border-indigo-700/50' : 'bg-emerald-50 text-emerald-700 border border-emerald-200/50 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-700/50' }}">
+                <span class="me-1 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider {{ auth()->user()->isAdmin() ? 'bg-gradient-to-r from-purple-100 to-indigo-100 text-indigo-700 border border-indigo-200/50 dark:from-purple-900/40 dark:to-indigo-900/40 dark:text-indigo-300 dark:border-indigo-700/50' : (auth()->user()->isPelanggan() ? 'bg-cyan-50 text-cyan-700 border border-cyan-200/50 dark:bg-cyan-900/30 dark:text-cyan-400 dark:border-cyan-700/50' : 'bg-emerald-50 text-emerald-700 border border-emerald-200/50 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-700/50') }}">
                     {{ auth()->user()->role }}
                 </span>
 
@@ -152,19 +172,28 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden md:hidden bg-slate-50 border-t border-slate-100 dark:bg-slate-900 dark:border-slate-700/60">
         <div class="pt-2 pb-3 space-y-1 px-3">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="rounded-xl dark:text-slate-300">
-                Dashboard
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('kasir.index')" :active="request()->routeIs('kasir.*') || request()->routeIs('kasir.index')" class="rounded-xl dark:text-slate-300">
-                Kasir
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('tracking.index')" :active="request()->routeIs('tracking.*') || request()->routeIs('tracking.index')" class="rounded-xl dark:text-slate-300">
-                Pelacakan
-            </x-responsive-nav-link>
-            @if (auth()->user()->isAdmin())
-                <x-responsive-nav-link :href="route('paket.index')" :active="request()->routeIs('paket.*')" class="rounded-xl dark:text-slate-300">
-                    Kelola Paket
+            @if (auth()->user()->isPelanggan())
+                <x-responsive-nav-link :href="route('pelanggan.dashboard')" :active="request()->routeIs('pelanggan.dashboard')" class="rounded-xl dark:text-slate-300">
+                    Dashboard
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('pelanggan.tracking')" :active="request()->routeIs('pelanggan.tracking')" class="rounded-xl dark:text-slate-300">
+                    Lacak Cucian
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link :href="route('staff.dashboard')" :active="request()->routeIs('staff.dashboard')" class="rounded-xl dark:text-slate-300">
+                    Dashboard
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('kasir.index')" :active="request()->routeIs('kasir.*') || request()->routeIs('kasir.index')" class="rounded-xl dark:text-slate-300">
+                    Kasir
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('tracking.index')" :active="request()->routeIs('tracking.*') || request()->routeIs('tracking.index')" class="rounded-xl dark:text-slate-300">
+                    Pelacakan
+                </x-responsive-nav-link>
+                @if (auth()->user()->isAdmin())
+                    <x-responsive-nav-link :href="route('paket.index')" :active="request()->routeIs('paket.*')" class="rounded-xl dark:text-slate-300">
+                        Kelola Paket
+                    </x-responsive-nav-link>
+                @endif
             @endif
         </div>
 
@@ -175,7 +204,7 @@
                     <div class="font-bold text-slate-800 dark:text-slate-100">{{ Auth::user()->name }}</div>
                     <div class="text-sm font-medium text-slate-500 dark:text-slate-400">{{ Auth::user()->email }}</div>
                 </div>
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300">
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider {{ auth()->user()->isAdmin() ? 'bg-purple-100 text-indigo-750 dark:bg-purple-900/30' : (auth()->user()->isPelanggan() ? 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30' : 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-350') }}">
                     {{ auth()->user()->role }}
                 </span>
             </div>
