@@ -17,7 +17,8 @@
                 <p class="text-xs text-slate-500 mt-1">Registrasi transaksi laundry masuk untuk pelanggan baru</p>
             </div>
 
-            <form wire:submit="simpan" class="space-y-5">
+            {{-- ID ditambahkan ke form agar tombol di luar bisa men-trigger submit --}}
+            <form id="formLaundry" wire:submit="simpan" class="space-y-5">
                 {{-- Nama Pelanggan --}}
                 <div>
                     <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">Nama Pelanggan</label>
@@ -75,7 +76,7 @@
                     <span class="w-1.5 h-4 bg-indigo-600 rounded-full"></span>
                     Ringkasan Nota
                 </h3>
-                
+
                 <div class="space-y-3 text-sm">
                     <div class="flex justify-between text-slate-500">
                         <span>Nama:</span>
@@ -117,8 +118,8 @@
                     </p>
                 </div>
 
-                {{-- Tombol --}}
-                <button wire:click="simpan" type="button"
+                {{-- Tombol diubah memakai form attribute agar lebih standar semantik HTML --}}
+                <button type="submit" form="formLaundry"
                     class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-2xl transition shadow-md shadow-indigo-100 flex items-center justify-center gap-2">
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
                     Simpan & Cetak Nota
@@ -126,4 +127,14 @@
             </div>
         </div>
     </div>
+
+
+    {{-- Skrip pendengar event untuk membuka tab baru --}}
+    @script
+    <script>
+        $wire.on('buka-struk-baru', (event) => {
+            window.open(event.url, '_blank');
+        });
+    </script>
+    @endscript
 </div>
