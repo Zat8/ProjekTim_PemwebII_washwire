@@ -12,8 +12,8 @@
     {{-- Header --}}
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-            <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Pelacakan & Status Cucian</h1>
-            <p class="text-xs text-slate-500 mt-1">Kelola siklus pengerjaan pakaian pelanggan secara real-time</p>
+            <h1 class="text-2xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">Pelacakan & Status Cucian</h1>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Kelola siklus pengerjaan pakaian pelanggan secara real-time</p>
         </div>
         
         {{-- Search --}}
@@ -22,15 +22,15 @@
                 <svg class="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
             </div>
             <input wire:model.live="search" type="text" placeholder="Cari no. nota atau nama..."
-                class="w-full bg-white border border-slate-200 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-xl pl-9 pr-4 py-2.5 text-sm transition" />
+                class="w-full bg-white dark:bg-slate-700 dark:text-slate-100 dark:border-slate-600 border border-slate-200 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-xl pl-9 pr-4 py-2.5 text-sm transition" />
         </div>
     </div>
 
     {{-- Tabel Transaksi --}}
-    <div class="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
+    <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-left text-slate-600">
-                <thead class="bg-slate-50 text-slate-500 uppercase text-[10px] font-bold tracking-wider">
+            <table class="w-full text-sm text-left text-slate-600 dark:text-slate-300">
+                <thead class="bg-slate-50 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 uppercase text-[10px] font-bold tracking-wider">
                     <tr>
                         <th class="px-6 py-4">No. Nota</th>
                         <th class="px-6 py-4">Pelanggan</th>
@@ -41,24 +41,24 @@
                         <th class="px-6 py-4 text-center font-semibold">Aksi</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100">
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
                     @forelse ($transaksis as $transaksi)
-                        <tr class="hover:bg-slate-50/50 transition">
-                            <td class="px-6 py-4 font-bold text-slate-800 tracking-tight">{{ $transaksi->no_nota }}</td>
+                        <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition">
+                            <td class="px-6 py-4 font-bold text-slate-800 dark:text-slate-100 tracking-tight">{{ $transaksi->no_nota }}</td>
                             <td class="px-6 py-4">
-                                <div class="font-semibold text-slate-800">{{ $transaksi->nama_pelanggan }}</div>
-                                <div class="text-[11px] text-slate-400 mt-0.5">{{ $transaksi->no_hp ?? '-' }}</div>
+                                <div class="font-semibold text-slate-800 dark:text-slate-100">{{ $transaksi->nama_pelanggan }}</div>
+                                <div class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">{{ $transaksi->no_hp ?? '-' }}</div>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-slate-850 font-medium">{{ $transaksi->paket->nama }}</div>
-                                <div class="text-[11px] text-slate-400 mt-0.5">{{ $transaksi->berat }} kg</div>
+                                <div class="text-slate-850 dark:text-slate-100 font-medium">{{ $transaksi->paket->nama }}</div>
+                                <div class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">{{ $transaksi->berat }} kg</div>
                             </td>
-                            <td class="px-6 py-4 font-extrabold text-slate-900">
+                            <td class="px-6 py-4 font-extrabold text-slate-900 dark:text-slate-100">
                                 Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-slate-700 font-medium">{{ $transaksi->created_at->format('d M Y') }}</div>
-                                <div class="text-[11px] text-slate-400 mt-0.5">{{ $transaksi->created_at->format('H:i') }} WIB</div>
+                                <div class="text-slate-700 dark:text-slate-300 font-medium">{{ $transaksi->created_at->format('d M Y') }}</div>
+                                <div class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">{{ $transaksi->created_at->format('H:i') }} WIB</div>
                             </td>
                             <td class="px-6 py-4 text-center">
                                 @if($transaksi->status !== 'siap_diambil')

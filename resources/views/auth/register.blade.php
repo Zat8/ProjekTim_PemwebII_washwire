@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center bg-white py-12 px-4">
+    <div class="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900 py-12 px-4">
         <div class="w-full max-w-md">
             <!-- Logo / Branding -->
             <div class="text-center mb-8">
@@ -12,11 +12,11 @@
                 <h1 class="text-3xl font-bold text-[#9737e3]">
                     WashWire Laundry
                 </h1>
-                <p class="text-gray-500 text-sm mt-2">Daftarkan akun baru Anda</p>
+                <p class="text-gray-500 dark:text-slate-400 text-sm mt-2">Daftarkan akun baru Anda</p>
             </div>
 
             <!-- Form Card -->
-            <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
+            <div class="bg-white dark:bg-slate-800 dark:border dark:border-slate-700 rounded-2xl shadow-xl p-8 border border-gray-200">
                 <form method="POST" action="{{ route('register') }}" class="space-y-4">
                     @csrf
 
@@ -88,7 +88,7 @@
                 </form>
             </div>
 
-            <p class="text-center text-sm text-gray-500 mt-6">
+            <p class="text-center text-sm text-gray-500 dark:text-slate-400 mt-6">
                 © {{ date('Y') }} WashWire Laundry. All rights reserved.
             </p>
         </div>
