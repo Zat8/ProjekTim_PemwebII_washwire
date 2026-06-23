@@ -20,5 +20,10 @@ class DatabaseSeeder extends Seeder
             PaketLaundrySeeder::class,
             TransaksiSeeder::class,
         ]);
+
+        // Generate additional random data using factories
+        User::factory(10)->create(['role' => 'pelanggan']);
+        \App\Models\PaketLaundry::factory(5)->create();
+        \App\Models\Transaksi::factory(20)->create();
     }
 }

@@ -5,11 +5,13 @@ namespace App\Livewire;
 use App\Models\Transaksi;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Url;
 
 class TransaksiTracking extends Component
 {
     use WithPagination;
 
+    #[Url]
     public $search = '';
 
     public function updatingSearch()

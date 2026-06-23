@@ -50,4 +50,4 @@ Route::middleware(['auth', 'role:pelanggan'])->prefix('pelanggan')->name('pelang
     Route::get('/tracking', PelangganTracking::class)->name('tracking');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

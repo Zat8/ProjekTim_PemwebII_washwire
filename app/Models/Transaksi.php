@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'no_nota', 'nama_pelanggan', 'no_hp',
         'paket_laundry_id', 'berat', 'total_harga',

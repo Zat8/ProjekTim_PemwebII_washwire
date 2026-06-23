@@ -138,15 +138,15 @@
     </div>
 
     <!-- Recent Transactions Table -->
-    <div class="flex gap-6 overflow-hidden w-full">
+    <div class="flex items-start gap-6 overflow-hidden w-full">
         <!-- table 1 -->
-        <div class="w-3/5 bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800">
+        <div class="w-3/5 h-fit bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800">
             <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-                <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-50">Transaksi Selesai Hari Ini</h3>
+                <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-50">Cucian Selesai Hari Ini ({{$totalTransaksiSelesaiHariIni}})</h3>
             </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left">
-                    <thead class="bg-zinc-50 dark:bg-zinc-800/50 border-b border-zinc-200 dark:border-zinc-800">
+            <div class="overflow-y-auto max-h-[360px]">
+                <table class="w-full text-sm text-left relative">
+                    <thead class="bg-zinc-50 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-10">
                         <tr>
                             <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">Waktu</th>
                             <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">Paket</th>
@@ -186,23 +186,21 @@
                                 </td>
                             </tr>
                         @endforelse
-                        <tr>
-                            <td colspan="2"
-                                class="px-6 py-4 font-semibold text-purple-600 dark:text-zinc-100 text-left">
-                                Pemasukan Terealisasi </td>
-                            <td class="px-6 py-4 font-semibold text-purple-600 dark:text-zinc-100">Rp
-                                {{ number_format($transaksiSelesaiHariIni->sum('total_harga'), 0, ',', '.') }}</td>
-                        </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="border-t border-zinc-200 dark:border-zinc-800 flex flex-row justify-between w-full">
+                <div class="px-6 py-4 w-full font-semibold text-purple-600 dark:text-purple-600 text-left">
+                    Total </div>
+                <div class="pr-12 py-4 font-semibold text-purple-600 dark:text-purple-600">Rp{{ number_format($transaksiSelesaiHariIni->sum('total_harga'), 0, ',', '.') }}</div>
             </div>
         </div>
 
 
         <!-- table 2 -->
-        <div class="w-full bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800">
+        <div class="w-full h-fit bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800">
             <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-                <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-50">Riwayat</h3>
+                <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-50">5 Transaksi Terbaru</h3>
                 <a href="{{ route('tracking.index') }}"
                     class="text-sm font-medium text-[#9737e3] hover:text-[#8528d1] transition-colors flex items-center gap-1">
                     Lihat Semua
@@ -224,12 +222,17 @@
                     <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800">
                         @forelse ($transaksiTerakhir as $transaksi)
                             <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
-                                <td class="px-6 py-4 font-medium text-zinc-900 dark:text-zinc-100">{{ $transaksi->no_nota }}
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('tracking.index', ['search' => $transaksi->no_nota]) }}"
+                                        class="underline cursor-pointer font-medium text-zinc-900 dark:text-zinc-100">
+                                        {{ $transaksi->no_nota }}
+                                    </a>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="font-medium underline cursor-pointer text-purple-600 dark:text-zinc-100">
+                                    <a href="{{ route('tracking.index', ['search' => $transaksi->nama_pelanggan]) }}"
+                                        class="font-medium cursor-pointer text-purple-600 dark:text-zinc-100">
                                         {{ $transaksi->nama_pelanggan }}
-                                    </div>
+                                    </a>
                                     <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
                                         {{ $transaksi->no_hp ?? '-' }}
                                     </div>
