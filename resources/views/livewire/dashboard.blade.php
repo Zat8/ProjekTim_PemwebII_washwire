@@ -154,7 +154,7 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800">
-                        @forelse ($transaksiSelesai as $transaksi)
+                        @forelse ($transaksiSelesaiHariIni as $transaksi)
                             <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
                                 <td class="px-6 py-4">
                                     <div class="font-medium text-zinc-900 dark:text-zinc-100">
@@ -191,7 +191,7 @@
                                 class="px-6 py-4 font-semibold text-purple-600 dark:text-zinc-100 text-left">
                                 Pemasukan Terealisasi </td>
                             <td class="px-6 py-4 font-semibold text-purple-600 dark:text-zinc-100">Rp
-                                {{ number_format($transaksiSelesai->sum('total_harga'), 0, ',', '.') }}</td>
+                                {{ number_format($transaksiSelesaiHariIni->sum('total_harga'), 0, ',', '.') }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -227,7 +227,7 @@
                                 <td class="px-6 py-4 font-medium text-zinc-900 dark:text-zinc-100">{{ $transaksi->no_nota }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                                    <div class="font-medium underline cursor-pointer text-purple-600 dark:text-zinc-100">
                                         {{ $transaksi->nama_pelanggan }}
                                     </div>
                                     <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
