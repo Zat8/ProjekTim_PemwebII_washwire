@@ -1,162 +1,147 @@
-<div class="space-y-8 animate-fade-in">
+<div class="space-y-6">
     <!-- Header Section -->
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-gradient-to-r from-slate-900 to-indigo-950 p-6 md:p-8 rounded-3xl text-white shadow-xl shadow-slate-100 relative overflow-hidden">
-        <div class="absolute -right-16 -top-16 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl"></div>
-        <div class="absolute -left-16 -bottom-16 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl"></div>
-        
-        <div class="relative z-10">
-            <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
-                Selamat datang, <span class="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 bg-clip-text text-transparent">{{ auth()->user()->name }}</span>! 👋
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white dark:bg-zinc-900 p-6 rounded-lg border border-zinc-200 dark:border-zinc-800">
+        <div>
+            <h1 class="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                Selamat datang, {{ auth()->user()->name }}
             </h1>
-            <p class="text-indigo-200/80 text-sm mt-1.5 font-medium flex items-center gap-1.5">
-                <svg class="w-4 h-4 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                 {{ now()->translatedFormat('l, d F Y') }}
             </p>
         </div>
-        
-        <div class="relative z-10 flex gap-2">
-            <a href="{{ route('kasir.index') }}" class="px-5 py-2.5 rounded-xl bg-white text-indigo-950 font-bold hover:bg-slate-50 transition shadow-md shadow-black/5 text-sm flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" /></svg>
+
+        <div class="flex gap-2">
+            <a href="{{ route('kasir.index') }}" class="px-4 py-2 rounded-md bg-[#9737e3] hover:bg-[#8528d1] text-white font-medium text-sm shadow-sm transition-colors flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
                 Transaksi Baru
             </a>
         </div>
     </div>
 
     <!-- Summary Metrics -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <!-- Metric Card 1 -->
-        <div class="group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 p-6 shadow-sm hover:shadow-md hover:border-slate-200/80 dark:hover:border-slate-600 transition duration-300 relative overflow-hidden">
-            <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-indigo-50 dark:bg-indigo-900/20 rounded-full group-hover:scale-125 transition duration-500"></div>
-            <div class="relative z-10 flex items-start justify-between">
-                <div>
-                    <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Total Transaksi Hari Ini</p>
-                    <h3 class="text-3xl font-extrabold text-slate-800 dark:text-slate-100 mt-2">{{ $totalTransaksiHariIni }}</h3>
-                    <p class="text-xs text-indigo-600 dark:text-indigo-400 font-semibold mt-1">Siklus kerja aktif</p>
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-sm shadow-indigo-100/50">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-6">
+            <div class="flex items-center justify-between">
+                <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Total Transaksi Hari Ini</p>
+                <div class="w-9 h-9 rounded-md bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
                 </div>
             </div>
+            <h3 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 mt-3">{{ $totalTransaksiHariIni }}</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Siklus kerja aktif</p>
         </div>
 
         <!-- Metric Card 2 -->
-        <div class="group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 p-6 shadow-sm hover:shadow-md hover:border-slate-200/80 dark:hover:border-slate-600 transition duration-300 relative overflow-hidden">
-            <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-emerald-50 dark:bg-emerald-900/20 rounded-full group-hover:scale-125 transition duration-500"></div>
-            <div class="relative z-10 flex items-start justify-between">
-                <div>
-                    <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Pemasukan Hari Ini</p>
-                    <h3 class="text-3xl font-extrabold text-slate-800 dark:text-slate-100 mt-2">Rp {{ number_format($pemasukanHariIni, 0, ',', '.') }}</h3>
-                    <p class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">Omzet kasir hari ini</p>
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shadow-sm shadow-emerald-100/50">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-6">
+            <div class="flex items-center justify-between">
+                <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Pemasukan Hari Ini</p>
+                <div class="w-9 h-9 rounded-md bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
             </div>
+            <h3 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 mt-3">Rp {{ number_format($pemasukanHariIni, 0, ',', '.') }}</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Omzet kasir hari ini</p>
         </div>
 
         <!-- Metric Card 3 -->
-        <div class="group bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 p-6 shadow-sm hover:shadow-md hover:border-slate-200/80 dark:hover:border-slate-600 transition duration-300 relative overflow-hidden">
-            <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-amber-50 dark:bg-amber-900/20 rounded-full group-hover:scale-125 transition duration-500"></div>
-            <div class="relative z-10 flex items-start justify-between">
-                <div>
-                    <p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Cucian Belum Diambil</p>
-                    <h3 class="text-3xl font-extrabold text-slate-800 dark:text-slate-100 mt-2">{{ $cucianPending }}</h3>
-                    <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold mt-1">Butuh penyelesaian status</p>
-                </div>
-                <div class="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-900/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-sm shadow-amber-100/50">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-6">
+            <div class="flex items-center justify-between">
+                <p class="text-sm font-medium text-zinc-500 dark:text-zinc-400">Cucian Belum Diambil</p>
+                <div class="w-9 h-9 rounded-md bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                     </svg>
                 </div>
             </div>
+            <h3 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 mt-3">{{ $cucianPending }}</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Butuh penyelesaian status</p>
         </div>
     </div>
 
     <!-- Quick Action Shortcuts -->
-    <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 p-6 shadow-sm">
-        <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base mb-4 flex items-center gap-2">
-            <span class="w-1.5 h-4 bg-indigo-600 rounded-full"></span>
-            Akses Cepat Fitur
-        </h3>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <a href="{{ route('kasir.index') }}" class="group p-4 bg-slate-50 dark:bg-slate-700/50 hover:bg-indigo-600 hover:text-white rounded-2xl transition duration-200 text-center flex flex-col items-center justify-center shadow-sm">
-                <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 group-hover:bg-white/20 group-hover:text-white flex items-center justify-center mb-3">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+    <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 p-6">
+        <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-4">Akses Cepat</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <a href="{{ route('kasir.index') }}" class="group p-4 bg-zinc-50 dark:bg-zinc-800/50 hover:bg-[#9737e3]/5 hover:border-[#9737e3]/30 border border-transparent rounded-lg transition-colors text-center flex flex-col items-center">
+                <div class="w-10 h-10 rounded-md bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-[#9737e3] flex items-center justify-center mb-3 shadow-sm">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
                 </div>
-                <span class="font-bold text-xs text-slate-600 dark:text-slate-300 group-hover:text-white">Transaksi Baru</span>
+                <span class="font-medium text-sm text-zinc-700 dark:text-zinc-300">Transaksi Baru</span>
             </a>
-            <a href="{{ route('tracking.index') }}" class="group p-4 bg-slate-50 dark:bg-slate-700/50 hover:bg-indigo-600 hover:text-white rounded-2xl transition duration-200 text-center flex flex-col items-center justify-center shadow-sm">
-                <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 group-hover:bg-white/20 group-hover:text-white flex items-center justify-center mb-3">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" /></svg>
+
+            <a href="{{ route('tracking.index') }}" class="group p-4 bg-zinc-50 dark:bg-zinc-800/50 hover:bg-[#9737e3]/5 hover:border-[#9737e3]/30 border border-transparent rounded-lg transition-colors text-center flex flex-col items-center">
+                <div class="w-10 h-10 rounded-md bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-[#9737e3] flex items-center justify-center mb-3 shadow-sm">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" /></svg>
                 </div>
-                <span class="font-bold text-xs text-slate-600 dark:text-slate-300 group-hover:text-white">Status Pelacakan</span>
+                <span class="font-medium text-sm text-zinc-700 dark:text-zinc-300">Status Pelacakan</span>
             </a>
+
             @if(auth()->user()->isAdmin())
-                <a href="{{ route('paket.index') }}" class="group p-4 bg-slate-50 dark:bg-slate-700/50 hover:bg-indigo-600 hover:text-white rounded-2xl transition duration-200 text-center flex flex-col items-center justify-center shadow-sm">
-                    <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 group-hover:bg-white/20 group-hover:text-white flex items-center justify-center mb-3">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5" /></svg>
+                <a href="{{ route('paket.index') }}" class="group p-4 bg-zinc-50 dark:bg-zinc-800/50 hover:bg-[#9737e3]/5 hover:border-[#9737e3]/30 border border-transparent rounded-lg transition-colors text-center flex flex-col items-center">
+                    <div class="w-10 h-10 rounded-md bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-[#9737e3] flex items-center justify-center mb-3 shadow-sm">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5" /></svg>
                     </div>
-                    <span class="font-bold text-xs text-slate-600 dark:text-slate-300 group-hover:text-white">Kelola Paket</span>
+                    <span class="font-medium text-sm text-zinc-700 dark:text-zinc-300">Kelola Paket</span>
                 </a>
             @endif
-            <a href="{{ route('profile.edit') }}" class="group p-4 bg-slate-50 dark:bg-slate-700/50 hover:bg-indigo-600 hover:text-white rounded-2xl transition duration-200 text-center flex flex-col items-center justify-center shadow-sm">
-                <div class="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 group-hover:bg-white/20 group-hover:text-white flex items-center justify-center mb-3">
-                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+
+            <a href="{{ route('profile.edit') }}" class="group p-4 bg-zinc-50 dark:bg-zinc-800/50 hover:bg-[#9737e3]/5 hover:border-[#9737e3]/30 border border-transparent rounded-lg transition-colors text-center flex flex-col items-center">
+                <div class="w-10 h-10 rounded-md bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-[#9737e3] flex items-center justify-center mb-3 shadow-sm">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
                 </div>
-                <span class="font-bold text-xs text-slate-600 dark:text-slate-300 group-hover:text-white">Profil Akun</span>
+                <span class="font-medium text-sm text-zinc-700 dark:text-zinc-300">Profil Akun</span>
             </a>
         </div>
     </div>
 
     <!-- Recent Transactions Table -->
-    <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden">
-        <div class="px-6 py-5 border-b border-slate-50 dark:border-slate-700 flex items-center justify-between">
-            <h3 class="font-bold text-slate-800 dark:text-slate-100 text-base flex items-center gap-2">
-                <span class="w-1.5 h-4 bg-indigo-600 rounded-full"></span>
-                5 Transaksi Terakhir
-            </h3>
-            <a href="{{ route('tracking.index') }}" class="text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition flex items-center gap-1">
-                Semua Transaksi
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+    <div class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+        <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-50">Transaksi Terakhir</h3>
+            <a href="{{ route('tracking.index') }}" class="text-sm font-medium text-[#9737e3] hover:text-[#8528d1] transition-colors flex items-center gap-1">
+                Lihat Semua
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </a>
         </div>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-left text-slate-600 dark:text-slate-300">
-                <thead class="bg-slate-50 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 uppercase text-[10px] font-bold tracking-wider">
+            <table class="w-full text-sm text-left">
+                <thead class="bg-zinc-50 dark:bg-zinc-800/50 border-b border-zinc-200 dark:border-zinc-800">
                     <tr>
-                        <th class="px-6 py-4">No. Nota</th>
-                        <th class="px-6 py-4">Pelanggan</th>
-                        <th class="px-6 py-4">Paket</th>
-                        <th class="px-6 py-4">Total</th>
-                        <th class="px-6 py-4 text-center">Status</th>
+                        <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">No. Nota</th>
+                        <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">Pelanggan</th>
+                        <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">Paket</th>
+                        <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">Total</th>
+                        <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400 text-center">Status</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+                <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800">
                     @forelse ($transaksiTerakhir as $transaksi)
-                        <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition">
-                            <td class="px-6 py-4 font-bold text-slate-800 dark:text-slate-100 tracking-tight">{{ $transaksi->no_nota }}</td>
+                        <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
+                            <td class="px-6 py-4 font-medium text-zinc-900 dark:text-zinc-100">{{ $transaksi->no_nota }}</td>
                             <td class="px-6 py-4">
-                                <div class="font-semibold text-slate-800 dark:text-slate-100">{{ $transaksi->nama_pelanggan }}</div>
-                                <div class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">{{ $transaksi->no_hp ?? '-' }}</div>
+                                <div class="font-medium text-zinc-900 dark:text-zinc-100">{{ $transaksi->nama_pelanggan }}</div>
+                                <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">{{ $transaksi->no_hp ?? '-' }}</div>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-slate-800 dark:text-slate-100 font-medium">{{ $transaksi->paket->nama }}</div>
-                                <div class="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">{{ $transaksi->berat }} kg</div>
+                                <div class="text-zinc-900 dark:text-zinc-100">{{ $transaksi->paket->nama }}</div>
+                                <div class="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">{{ $transaksi->berat }} kg</div>
                             </td>
-                            <td class="px-6 py-4 font-extrabold text-slate-900 dark:text-slate-100">
+                            <td class="px-6 py-4 font-semibold text-zinc-900 dark:text-zinc-100">
                                 Rp {{ number_format($transaksi->total_harga, 0, ',', '.') }}
                             </td>
                             <td class="px-6 py-4 text-center">
                                 <span @class([
-                                    'px-3 py-1 rounded-full text-xs font-semibold inline-block border',
-                                    'bg-amber-50 text-amber-700 border-amber-100' => $transaksi->status === 'antrean',
-                                    'bg-indigo-50 text-indigo-700 border-indigo-100' => $transaksi->status === 'dicuci',
-                                    'bg-orange-50 text-orange-700 border-orange-100' => $transaksi->status === 'disetrika',
-                                    'bg-emerald-50 text-emerald-700 border-emerald-100' => $transaksi->status === 'siap_diambil',
+                                    'px-2.5 py-0.5 rounded-md text-xs font-medium inline-flex items-center border',
+                                    'bg-zinc-100 text-zinc-800 border-zinc-200 dark:bg-zinc-700 dark:text-zinc-200 dark:border-zinc-600' => $transaksi->status === 'antrean',
+                                    'bg-[#9737e3]/10 text-[#9737e3] border-[#9737e3]/20' => $transaksi->status === 'dicuci',
+                                    'bg-transparent text-zinc-600 border-zinc-300 dark:text-zinc-400 dark:border-zinc-700' => $transaksi->status === 'disetrika',
+                                    'bg-zinc-900 text-zinc-50 border-zinc-900 dark:bg-zinc-50 dark:text-zinc-900 dark:border-zinc-50' => $transaksi->status === 'siap_diambil',
                                 ])>
                                     {{ str_replace('_', ' ', ucfirst($transaksi->status)) }}
                                 </span>
@@ -164,10 +149,12 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center py-10 text-slate-400 font-medium">
-                                <div class="flex flex-col items-center justify-center gap-2">
-                                    <svg class="w-8 h-8 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0a2 2 0 01-2 2H6a2 2 0 01-2-2m16 0l-3.586-3.586a2 2 0 00-2.828 0L16 12m-2-2l-1.586-1.586a2 2 0 00-2.828 0L6 10" /></svg>
-                                    Belum ada transaksi hari ini.
+                            <td colspan="5" class="text-center py-12 text-zinc-500 dark:text-zinc-400">
+                                <div class="flex flex-col items-center justify-center gap-3">
+                                    <div class="w-12 h-12 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0a2 2 0 01-2 2H6a2 2 0 01-2-2m16 0l-3.586-3.586a2 2 0 00-2.828 0L16 12m-2-2l-1.586-1.586a2 2 0 00-2.828 0L6 10" /></svg>
+                                    </div>
+                                    <p class="text-sm font-medium">Belum ada transaksi hari ini.</p>
                                 </div>
                             </td>
                         </tr>

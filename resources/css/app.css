@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,18 +6,21 @@
 
 @layer base {
     /* Smooth transitions for dark mode toggle */
-    *, *::before, *::after {
-        transition-property: background-color, border-color, color, fill, stroke;
+    *,
+    *::before,
+    *::after {
+        transition-property:
+            background-color, border-color, color, fill, stroke;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 200ms;
     }
 
     body {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        @apply bg-slate-50 text-slate-800 antialiased;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        @apply bg-slate-50 bg-zinc-900 antialiased;
     }
 
     .dark body {
-        @apply bg-slate-900 text-slate-100;
+        @apply bg-zinc-950 text-slate-100;
     }
 }
