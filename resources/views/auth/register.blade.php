@@ -93,28 +93,6 @@
                             @enderror
                         </div>
 
-                        {{-- No HP (Optional untuk pelanggan) --}}
-                        <div class="space-y-2">
-                            <label for="no_hp" class="text-sm font-medium text-zinc-900 dark:text-zinc-50">
-                                No. HP <span class="text-zinc-400 font-normal">(Opsional)</span>
-                            </label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <span class="text-sm text-zinc-500 dark:text-zinc-400">+62</span>
-                                </div>
-                                <input id="no_hp"
-                                    class="flex h-10 w-full rounded-md border border-zinc-200 bg-white pl-12 pr-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 hover:border-zinc-300 focus:outline-none focus:ring-2 focus:ring-[#b45ef7]/20 focus:border-[#b45ef7] dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:hover:border-zinc-700 transition-colors"
-                                    type="text"
-                                    name="no_hp"
-                                    value="{{ old('no_hp') }}"
-                                    autocomplete="tel"
-                                    placeholder="81234567890" />
-                            </div>
-                            @error('no_hp')
-                                <p class="text-sm font-medium text-red-500 dark:text-red-400">{{ $message }}</p>
-                            @enderror
-                        </div>
-
                         {{-- Password --}}
                         <div class="space-y-2">
                             <label for="password" class="text-sm font-medium text-zinc-900 dark:text-zinc-50">Password</label>

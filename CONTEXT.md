@@ -1,6 +1,6 @@
 # WashWire Laundry — Konteks Proyek
 
-> Proyek ini adalah **Sistem Manajemen Laundry** berbasis web yang dibangun untuk memenuhi tugas **CPMK4 ProjekTim PemwebII**. Aplikasi ini memungkinkan admin dan kasir untuk mengelola transaksi laundry dari hulu ke hilir.
+> Proyek ini adalah **Sistem Manajemen Laundry** berbasis web yang dibangun untuk memenuhi tugas **CPMK4 ProjekTim PemwebII**. Aplikasi ini memungkinkan admin dan kasir untuk mengelola transaksi laundry dari hulu ke hilir. Pelanggan dapat melacak status cucian melalui landing page publik tanpa perlu login.
 
 ---
 
@@ -25,14 +25,17 @@
 | **Admin** | Dashboard, Kelola Paket (CRUD), Tracking, Cetak Struk |
 | **Kasir** | Dashboard, Kasir (buat transaksi), Tracking, Cetak Struk |
 
+> **Catatan:** Tidak ada role pelanggan. Pelanggan melacak cucian via landing page publik (`/`) dengan memasukkan nomor invoice.
+
 ### Routes Utama
 
 | Method | URI | Nama | Middleware | Handler |
 |---|---|---|---|---|
+| GET | `/` | `landing` | — (publik) | `CekStatusCucian` (Livewire) |
 | GET | `/dashboard` | `dashboard` | auth, verified | `Dashboard` (Livewire) |
-| GET | `/kasir` | `kasir.index` | auth | `TransaksiForm` (Livewire) |
-| GET | `/tracking` | `tracking.index` | auth | `TransaksiTracking` (Livewire) |
-| GET | `/struk/{transaksi}` | `struk.cetak` | auth | `StrukController@cetak` |
+| GET | `/kasir` | `kasir.index` | auth, role:admin,kasir | `TransaksiForm` (Livewire) |
+| GET | `/tracking` | `tracking.index` | auth, role:admin,kasir | `TransaksiTracking` (Livewire) |
+| GET | `/struk/{transaksi}` | `struk.cetak` | auth, role:admin,kasir | `StrukController@cetak` |
 | GET | `/paket` | `paket.index` | auth, role:admin | `PaketIndex` (Livewire) |
 | GET | `/paket/buat` | `paket.buat` | auth, role:admin | `PaketForm` (Livewire) |
 | GET | `/paket/{paket}/edit` | `paket.edit` | auth, role:admin | `PaketForm` (Livewire) |
@@ -57,7 +60,7 @@ Kasir input transaksi → Status "antrean" → "dicuci" → "disetrika" → "sia
 | id | bigint unsigned, PK | |
 | name | varchar(255) | |
 | email | varchar(255) | unique |
-| role | enum('admin','kasir') | default 'kasir' |
+| role | string | default 'kasir' |
 | password | varchar(255) | hashed |
 
 ### `paket_laundrys`
@@ -95,6 +98,9 @@ PaketLaundry (1) ──< (N) Transaksi   (satu paket dipakai di banyak transaksi
 ---
 
 ## Komponen Livewire
+
+### `CekStatusCucian` (`/`)
+Halaman landing page publik (tanpa auth) untuk pelanggan melacak status cucian. Menerima input nomor invoice, menampilkan detail transaksi dan progress timeline.
 
 ### `Dashboard` (`/dashboard`)
 Menampilkan ringkasan: total transaksi hari ini, pemasukan hari ini, cucian pending (belum siap_diambil), dan 5 transaksi terbaru.
@@ -143,7 +149,7 @@ php artisan db:seed
 ## Catatan Penting
 
 - Semua halaman utama menggunakan **Livewire full-page component** — tidak ada controller tradisional untuk rute-rute ini.
+- Landing page (`/`) bersifat **publik** dan menggunakan layout `guest-tracking` — tanpa navigasi auth.
 - Middleware `role` (didaftarkan di `bootstrap/app.php`) digunakan untuk membatasi akses admin.
 - Session, cache, dan queue semuanya menggunakan **driver database**.
-- Default README.md adalah README default Laravel dan belum diperbarui untuk proyek ini.
 - Status transaksi bersifat **linear search** — method `statusBerikutnya()` di model `Transaksi` mengembalikan status selanjutnya berdasarkan array berurutan.

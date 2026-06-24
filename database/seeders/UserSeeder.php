@@ -23,13 +23,5 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'kasir',
         ]);
-
-        User::create([
-            'name' => 'Budi Santoso',
-            'email' => 'pelanggan@washwire.com',
-            'password' => Hash::make('password'),
-            'role' => 'pelanggan',
-            'no_hp' => '081234567890',
-        ]);
     }
 }

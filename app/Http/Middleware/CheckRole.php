@@ -15,13 +15,8 @@ class CheckRole
         }
 
         if (!in_array($request->user()->role, $roles)) {
-            if ($request->user()->role === 'pelanggan') {
-                return redirect()->route('pelanggan.dashboard')
-                    ->with('warning', 'Anda tidak memiliki akses ke halaman manajemen.');
-            }
-
-            return redirect()->route('staff.dashboard')
-                ->with('warning', 'Anda tidak memiliki akses ke halaman portal pelanggan.');
+            return redirect()->route('dashboard')
+                ->with('warning', 'Anda tidak memiliki akses ke halaman tersebut.');
         }
 
         return $next($request);
