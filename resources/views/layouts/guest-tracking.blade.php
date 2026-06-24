@@ -41,7 +41,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <body class="font-sans antialiased bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 min-h-screen">
+    <body class="font-sans antialiased bg-canvas text-ink dark:bg-ink dark:text-canvas min-h-screen">
         {{ $slot }}
         @livewireScripts
     </body>
