@@ -132,7 +132,7 @@
                         <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-6">Status Pengerjaan</h3>
 
                         @php
-                            $statuses = ['antrean', 'dicuci', 'disetrika', 'siap_diambil'];
+                            $statuses = $detailTransaksi->statusUrutan();
                             $currentStatusIndex = array_search($detailTransaksi->status, $statuses);
 
                             $statusMetadata = [

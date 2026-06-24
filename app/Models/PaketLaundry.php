@@ -10,7 +10,7 @@ class PaketLaundry extends Model
     use HasFactory;
     protected $table = 'paket_laundrys';
 
-    protected $fillable = ['nama', 'harga_per_kg', 'satuan'];
+    protected $fillable = ['nama', 'harga_per_kg', 'satuan', 'alur_proses'];
 
     public function transaksis()
     {

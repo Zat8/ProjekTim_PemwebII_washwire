@@ -45,6 +45,18 @@
             @error('satuan') <p class="text-sm font-medium text-red-500 dark:text-red-400">{{ $message }}</p> @enderror
         </div>
 
+        {{-- Alur Proses --}}
+        <div class="space-y-2">
+            <label class="text-sm font-medium text-zinc-900 dark:text-zinc-50">Alur Proses Pengerjaan</label>
+            <select wire:model.live="alur_proses"
+                class="flex h-10 w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-[#b45ef7]/20 focus:border-[#b45ef7] dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 transition-colors">
+                <option value="cuci_setrika">Cuci & Setrika (Antrean &rarr; Dicuci &rarr; Disetrika &rarr; Siap Diambil)</option>
+                <option value="cuci_saja">Cuci Saja (Antrean &rarr; Dicuci &rarr; Siap Diambil)</option>
+                <option value="setrika_saja">Setrika Saja (Antrean &rarr; Disetrika &rarr; Siap Diambil)</option>
+            </select>
+            @error('alur_proses') <p class="text-sm font-medium text-red-500 dark:text-red-400">{{ $message }}</p> @enderror
+        </div>
+
         {{-- Tombol Aksi --}}
         <div class="flex items-center gap-3 pt-6 border-t border-zinc-200 dark:border-zinc-800">
             <button type="submit"

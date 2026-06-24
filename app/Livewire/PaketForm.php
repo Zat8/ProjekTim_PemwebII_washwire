@@ -11,6 +11,7 @@ class PaketForm extends Component
     public $nama = '';
     public $harga_per_kg = '';
     public $satuan = 'kg';
+    public $alur_proses = 'cuci_setrika';
 
     public function mount(?PaketLaundry $paket = null)
     {
@@ -19,6 +20,7 @@ class PaketForm extends Component
             $this->nama = $paket->nama;
             $this->harga_per_kg = $paket->harga_per_kg;
             $this->satuan = $paket->satuan;
+            $this->alur_proses = $paket->alur_proses ?? 'cuci_setrika';
         }
     }
 
@@ -28,6 +30,7 @@ class PaketForm extends Component
             'nama' => 'required|min:3|max:100',
             'harga_per_kg' => 'required|numeric|min:0',
             'satuan' => 'required|in:kg,item',
+            'alur_proses' => 'required|in:cuci_setrika,cuci_saja,setrika_saja',
         ];
     }
 
@@ -39,6 +42,7 @@ class PaketForm extends Component
             'nama' => $this->nama,
             'harga_per_kg' => $this->harga_per_kg,
             'satuan' => $this->satuan,
+            'alur_proses' => $this->alur_proses,
         ];
 
         if ($this->paket?->exists) {

@@ -14,7 +14,7 @@ class PelangganDashboard extends Component
 
         if ($no_hp) {
             $transaksis = Transaksi::where('no_hp', $no_hp)->with('paket')->latest()->get();
-            $cucianAktif = $transaksis->whereIn('status', ['antrean', 'dicuci', 'disetrika'])->count();
+            $cucianAktif = $transaksis->where('status', '!=', 'siap_diambil')->count();
             $totalTransaksi = $transaksis->count();
             $siapDiambil = $transaksis->where('status', 'siap_diambil')->count();
         } else {

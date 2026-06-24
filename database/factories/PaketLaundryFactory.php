@@ -21,6 +21,7 @@ class PaketLaundryFactory extends Factory
             'nama' => fake()->words(2, true),
             'harga_per_kg' => fake()->randomElement([5000, 6000, 8000, 10000, 12000]),
             'satuan' => fake()->randomElement(['kg', 'pcs']),
+            'alur_proses' => fake()->randomElement(['cuci_setrika', 'cuci_saja', 'setrika_saja']),
         ];
     }
 }

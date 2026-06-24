@@ -26,6 +26,7 @@
             <thead class="bg-zinc-50 dark:bg-zinc-800/50 border-b border-zinc-200 dark:border-zinc-800">
                 <tr>
                     <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">Nama Paket</th>
+                    <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">Alur Proses</th>
                     <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">Harga per Satuan</th>
                     <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400">Satuan</th>
                     <th class="px-6 py-3 font-medium text-zinc-500 dark:text-zinc-400 text-center">Aksi</th>
@@ -35,6 +36,22 @@
                 @forelse ($pakets as $paket)
                     <tr class="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
                         <td class="px-6 py-4 font-medium text-zinc-900 dark:text-zinc-100">{{ $paket->nama }}</td>
+                        <td class="px-6 py-4">
+                            @php
+                                $alurLabel = match($paket->alur_proses) {
+                                    'cuci_saja' => 'Cuci Saja',
+                                    'setrika_saja' => 'Setrika Saja',
+                                    default => 'Cuci & Setrika',
+                                };
+                                $alurSteps = match($paket->alur_proses) {
+                                    'cuci_saja' => 'Antrean ➔ Dicuci ➔ Siap Diambil',
+                                    'setrika_saja' => 'Antrean ➔ Disetrika ➔ Siap Diambil',
+                                    default => 'Antrean ➔ Dicuci ➔ Disetrika ➔ Siap Diambil',
+                                };
+                            @endphp
+                            <div class="text-zinc-900 dark:text-zinc-100 font-medium text-sm">{{ $alurLabel }}</div>
+                            <div class="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5">{{ $alurSteps }}</div>
+                        </td>
                         <td class="px-6 py-4 font-semibold text-zinc-900 dark:text-zinc-100">
                             Rp {{ number_format($paket->harga_per_kg, 0, ',', '.') }}
                         </td>
@@ -61,7 +78,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" class="text-center py-12 text-zinc-500 dark:text-zinc-400">
+                        <td colspan="5" class="text-center py-12 text-zinc-500 dark:text-zinc-400">
                             <div class="flex flex-col items-center justify-center gap-3">
                                 <div class="w-12 h-12 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center">
                                     <svg class="w-6 h-6 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0a2 2 0 01-2 2H6a2 2 0 01-2-2m16 0l-3.586-3.586a2 2 0 00-2.828 0L16 12m-2-2l-1.586-1.586a2 2 0 00-2.828 0L6 10" /></svg>
