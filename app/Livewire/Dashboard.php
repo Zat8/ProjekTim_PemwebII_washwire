@@ -4,11 +4,9 @@ namespace App\Livewire;
 
 use App\Models\Transaksi;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Dashboard extends Component
 {
-    use WithPagination;
     public function render()
     {
         $totalTransaksiHariIni = Transaksi::whereDate('created_at', today())->count();
